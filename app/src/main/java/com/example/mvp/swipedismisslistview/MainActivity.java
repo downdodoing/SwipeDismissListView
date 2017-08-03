@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         SwipeDismissListView listView = (SwipeDismissListView) findViewById(R.id.list);
         mList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 40; i++) {
             mList.add("滑动删除" + i);
         }
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, mList);

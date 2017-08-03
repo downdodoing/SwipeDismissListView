@@ -97,6 +97,7 @@ public class SwipeDismissListView extends ListView {
         if (mDownPosition == AdapterView.INVALID_POSITION) {
             return;
         }
+
         mDownView = getChildAt(mDownPosition - getFirstVisiblePosition());
 
         if (null != mDownView) {
@@ -169,7 +170,8 @@ public class SwipeDismissListView extends ListView {
             ViewPropertyAnimator.animate(mDownView)
                     .translationX(0)
                     .alpha(1)
-                    .setDuration(mAnimtionTime);
+                    .setDuration(mAnimtionTime)
+                    .setListener(null);
         }
         if (null != mVelocityTracker) {
             mVelocityTracker.recycle();
@@ -197,6 +199,9 @@ public class SwipeDismissListView extends ListView {
                 ViewGroup.LayoutParams lp1 = dismissView.getLayoutParams();
                 lp1.height = originaHeight;
                 dismissView.setLayoutParams(lp1);
+
+                dismissView.clearAnimation();
+                Log.i(TAG, "onAnimationEnd: " + dismissView.getAnimation());
             }
         });
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
